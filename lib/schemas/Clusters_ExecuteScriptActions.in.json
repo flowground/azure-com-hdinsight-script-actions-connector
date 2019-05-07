@@ -1,0 +1,73 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "clusterName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters for the script actions to execute on a running cluster.",
+            "properties": {
+                "persistOnSuccess": {
+                    "description": "Gets or sets if the scripts needs to be persisted.",
+                    "type": "boolean"
+                },
+                "scriptActions": {
+                    "description": "The list of run time script actions.",
+                    "items": {
+                        "description": "Describes a script action on a running cluster.",
+                        "properties": {
+                            "applicationName": {
+                                "description": "The application name of the script action, if any.",
+                                "readOnly": true,
+                                "type": "string"
+                            },
+                            "name": {
+                                "description": "The name of the script action.",
+                                "type": "string"
+                            },
+                            "parameters": {
+                                "description": "The parameters for the script",
+                                "type": "string"
+                            },
+                            "roles": {
+                                "description": "The list of roles where script will be executed.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "uri": {
+                                "description": "The URI to the script.",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "uri",
+                            "roles"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "persistOnSuccess"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
